@@ -3,6 +3,7 @@ services:
   ql_web:
     image: whyour/qinglong:2.11.3
     container_name: ql
+    privileged: true
     volumes:
       - ./data/config:/ql/config
       - ./data/log:/ql/log
