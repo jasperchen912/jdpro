@@ -48,6 +48,7 @@ version: '2'
 services:
   qinglong:
     image: whyour/qinglong:2.11.3
+    privileged: true
     container_name: qinglong
     volumes:
       - ./data/config:/ql/config
