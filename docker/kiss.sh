@@ -435,7 +435,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -e ENABLE_HANGUP=false \
       -e ENABLE_WEB_PANEL=true \
       -p $QL_PORT:5700 \
-      --privileged
+      --privileged \
       --name $QL_CONTAINER_NAME \
       --hostname $QL_CONTAINER_NAME \
       --restart always \
@@ -636,7 +636,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -e ENABLE_HANGUP=false \
       -e ENABLE_WEB_PANEL=true \
       -p $QL_PORT:5700 \
-      --privileged
+      --privileged \
       --name $QL_CONTAINER_NAME \
       --hostname $QL_CONTAINER_NAME \
       --restart always \
@@ -668,7 +668,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -e ENABLE_HANGUP=false \
       -e ENABLE_WEB_PANEL=true \
       -p $QL_PORT:5700 \
-      --privileged
+      --privileged \
       --name $QL_CONTAINER_NAME \
       --hostname $QL_CONTAINER_NAME \
       --restart always \
@@ -867,7 +867,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -v $LOG_PATH:/usr/local/app/logs \
       -p $V2P_PORT:80 -p $V2P_PORT1:8001 -p $V2P_PORT2:8002 \
       -e TZ=Asia/Shanghai \
-      --privileged
+      --privileged \
       --name $V2P_CONTAINER_NAME \
       --hostname $V2P_CONTAINER_NAME \
       --restart always \
@@ -1008,7 +1008,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -v $LOG_PATH:/usr/local/app/logs \
       -p $V2P_PORT:80 -p $V2P_PORT1:8001 -p $V2P_PORT2:8002 \
       -e TZ=Asia/Shanghai \
-      --privileged
+      --privileged \
       --name $V2P_CONTAINER_NAME \
       --hostname $V2P_CONTAINER_NAME \
       --restart always \
@@ -1278,7 +1278,7 @@ TIME r "<注>请使用root账户部署容器"
   log "2.开始创建容器并执行"
       if [ -d "/dev/dri" ]; then
           docker run -dit \
-	      --privileged
+	            --privileged \
               --name $EMBY_CONTAINER_NAME \
               --hostname $EMBY_CONTAINER_NAME \
               --restart always \
@@ -1295,6 +1295,7 @@ TIME r "<注>请使用root账户部署容器"
               $EMBY_DOCKER_IMG_NAME:$EMBY_TAG
       else
           docker run -dit \
+              --privileged \
               --name $EMBY_CONTAINER_NAME \
               --hostname $EMBY_CONTAINER_NAME \
               --restart always \
@@ -1440,6 +1441,7 @@ TIME r "<注>请使用root账户部署容器"
       if [ -d "/dev/dri" ]; then
           docker run -dit \
               --name $JELLYFIN_CONTAINER_NAME \
+              --privileged \
               --hostname $JELLYFIN_CONTAINER_NAME \
               --restart always \
               -v $CONFIG_PATH:/config \
@@ -1455,6 +1457,7 @@ TIME r "<注>请使用root账户部署容器"
               $JELLYFIN_DOCKER_IMG_NAME:$TAG
       else
           docker run -dit \
+              --privileged \
               --name $JELLYFIN_CONTAINER_NAME \
               --hostname $JELLYFIN_CONTAINER_NAME \
               --restart always \
@@ -1602,6 +1605,7 @@ TIME r "<注>aria2和aria2-pro 二选一"
       -e UID=0  \
       -e GID=0  \
       -e UMASK=022  \
+      --privileged \
       --name $QB_CONTAINER_NAME \
       --hostname $QB_CONTAINER_NAME \
       --restart always \
@@ -1724,6 +1728,7 @@ TIME r "<注>aria2和aria2-pro 二选一"
       -e FA=falloc \
       -e QUIET=true \
       -e SMD=false \
+      --privileged \
       --name $ARIA2_CONTAINER_NAME \
       --hostname $ARIA2_CONTAINER_NAME \
       --restart always \
@@ -1855,12 +1860,14 @@ TIME r "<注>aria2和aria2-pro 二选一"
       -e GID=0  \
       -e UMASK_SET=022 \
       --log-opt max-size=1m \
+      --privileged \
       --name $ARIA2_PRO_CONTAINER_NAME \
       --hostname $ARIA2_PRO_CONTAINER_NAME \
       --restart always \
       $ARIA2_PRO_DOCKER_IMG_NAME:$TAG
 
   docker run -d \
+      --privileged \
       --name $ARIA2_PRO_WEBUI_NAME \
       --log-opt max-size=1m \
       --restart unless-stopped \
@@ -1982,6 +1989,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
   log "2.开始创建容器并执行"
   docker run -dit \
       -t \
+      --privileged \
       -v $CONFIG_PATH:/telethon \
       --name $TG_CONTAINER_NAME \
       --hostname $TG_CONTAINER_NAME \
@@ -2066,6 +2074,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
   docker run -dit \
       -t \
       -v $CONFIG_PATH:/telethon \
+      --privileged \
       --name $TG_CONTAINER_NAME \
       --hostname $TG_CONTAINER_NAME \
       --restart always \
@@ -2189,6 +2198,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -t \
       -v $WORK_PATH:/opt/adguardhome/work \
       -v $CONF_PATH:/opt/adguardhome/conf \
+      --privileged \
       --name $ADG_CONTAINER_NAME \
       --hostname $ADG_CONTAINER_NAME \
       --restart always \
@@ -2276,6 +2286,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -t \
       -v $WORK_PATH:/opt/adguardhome/work \
       -v $CONF_PATH:/opt/adguardhome/conf \
+      --privileged \
       --name $ADG_CONTAINER_NAME \
       --hostname $ADG_CONTAINER_NAME \
       --restart always \
@@ -2424,6 +2435,7 @@ TIME b "(0) 返回上级菜单"
       -t \
       -v $DB_PATH:/etc/x-ui/ \
       -v $CERT_PATH:/root/ \
+      --privileged \
       --name $XUI_CONTAINER_NAME \
       --hostname $XUI_CONTAINER_NAME \
       --restart always \
@@ -2558,6 +2570,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -v $WEBSITE_DATA_PATH:/www/wwwroot \
       -v $MYSQL_DATA_PATH:/www/server/data \
       -v $VHOST_PATH:/www/server/panel/vhost \
+      --privileged \
       --name $AAPANEL_CONTAINER_NAME \
       --hostname $AAPANEL_CONTAINER_NAME \
       --restart always \
@@ -2656,6 +2669,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -v $WEBSITE_DATA_PATH:/www/wwwroot \
       -v $MYSQL_DATA_PATH:/www/server/data \
       -v $VHOST_PATH:/www/server/panel/vhost \
+      --privileged \
       --name $AAPANEL_CONTAINER_NAME \
       --hostname $AAPANEL_CONTAINER_NAME \
       --restart always \
@@ -2808,7 +2822,7 @@ TIME r "<注>选择后，如果不明白如何选择或输入，请狂按回车�
       --hostname $MAIARK_CONTAINER_NAME \
       --restart always \
       --network $NETWORK \
-      --privileged
+      --privileged \
       -p $MAIARK_PORT:8082 \
       $MAIARK_DOCKER_IMG_NAME:$TAG
 
@@ -2926,7 +2940,7 @@ TIME r "<注>选择后，如果不明白如何选择或输入，请狂按回车�
   docker run -dit \
       -t \
       -v $CONFIG_PATH:/MaiARK \
-      --privileged
+      --privileged \
       --name $MAIARK_CONTAINER_NAME \
       --hostname $MAIARK_CONTAINER_NAME \
       --restart always \
