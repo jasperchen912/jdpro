@@ -404,6 +404,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -e ENABLE_WEB_PANEL=true \
       -p $QL_PORT:5700 \
       --name $QL_CONTAINER_NAME \
+      --privileged
       --hostname $QL_CONTAINER_NAME \
       --restart always \
       --network $NETWORK \
@@ -434,6 +435,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -e ENABLE_HANGUP=false \
       -e ENABLE_WEB_PANEL=true \
       -p $QL_PORT:5700 \
+      --privileged
       --name $QL_CONTAINER_NAME \
       --hostname $QL_CONTAINER_NAME \
       --restart always \
@@ -634,6 +636,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -e ENABLE_HANGUP=false \
       -e ENABLE_WEB_PANEL=true \
       -p $QL_PORT:5700 \
+      --privileged
       --name $QL_CONTAINER_NAME \
       --hostname $QL_CONTAINER_NAME \
       --restart always \
@@ -665,6 +668,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -e ENABLE_HANGUP=false \
       -e ENABLE_WEB_PANEL=true \
       -p $QL_PORT:5700 \
+      --privileged
       --name $QL_CONTAINER_NAME \
       --hostname $QL_CONTAINER_NAME \
       --restart always \
@@ -863,6 +867,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -v $LOG_PATH:/usr/local/app/logs \
       -p $V2P_PORT:80 -p $V2P_PORT1:8001 -p $V2P_PORT2:8002 \
       -e TZ=Asia/Shanghai \
+      --privileged
       --name $V2P_CONTAINER_NAME \
       --hostname $V2P_CONTAINER_NAME \
       --restart always \
@@ -1003,6 +1008,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -v $LOG_PATH:/usr/local/app/logs \
       -p $V2P_PORT:80 -p $V2P_PORT1:8001 -p $V2P_PORT2:8002 \
       -e TZ=Asia/Shanghai \
+      --privileged
       --name $V2P_CONTAINER_NAME \
       --hostname $V2P_CONTAINER_NAME \
       --restart always \
@@ -1272,6 +1278,7 @@ TIME r "<注>请使用root账户部署容器"
   log "2.开始创建容器并执行"
       if [ -d "/dev/dri" ]; then
           docker run -dit \
+	      --privileged
               --name $EMBY_CONTAINER_NAME \
               --hostname $EMBY_CONTAINER_NAME \
               --restart always \
@@ -2801,6 +2808,7 @@ TIME r "<注>选择后，如果不明白如何选择或输入，请狂按回车�
       --hostname $MAIARK_CONTAINER_NAME \
       --restart always \
       --network $NETWORK \
+      --privileged
       -p $MAIARK_PORT:8082 \
       $MAIARK_DOCKER_IMG_NAME:$TAG
 
@@ -2918,6 +2926,7 @@ TIME r "<注>选择后，如果不明白如何选择或输入，请狂按回车�
   docker run -dit \
       -t \
       -v $CONFIG_PATH:/MaiARK \
+      --privileged
       --name $MAIARK_CONTAINER_NAME \
       --hostname $MAIARK_CONTAINER_NAME \
       --restart always \
