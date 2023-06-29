@@ -404,7 +404,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
       -e ENABLE_WEB_PANEL=true \
       -p $QL_PORT:5700 \
       --name $QL_CONTAINER_NAME \
-      --privileged
+      --privileged \
       --hostname $QL_CONTAINER_NAME \
       --restart always \
       --network $NETWORK \
